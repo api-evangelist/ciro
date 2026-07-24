@@ -1,0 +1,52 @@
+# Ciro
+
+> Ciro finds your best accounts, deeply qualifies each contact, runs a contact data waterfall, and writes signal-based outbound. All pushed directly into your existing sales tools.
+
+## What Ciro does
+
+Ciro is an AI sales platform. Reps command Ciro in Slack using plain English. Ciro handles:
+
+- AI prospecting: finds and builds targeted prospect lists from a natural language description
+- Contact enrichment: enriches contacts with verified emails, phone numbers, and company data
+- Personalized outreach: drafts multi-step email sequences personalized to each contact's company, role, and recent activity
+- Campaign recommendations: analyzes your CRM to surface the highest-ROI plays (closed-lost re-engagement, expansion into existing accounts, funding signal outreach)
+
+## Slack agent
+
+Ciro AI runs as a Slack app. Reps @mention Ciro in any channel or DM to run searches, enrich contacts, query the CRM, analyze CSVs, and pull account briefs. Every seat in your Slack workspace can use it, not just paid Ciro seats. Ciro maintains persistent org-level memory of your ICP, messaging rules, and exclusions so results get sharper over time. Page: https://ciro.io/product/slack-agent
+
+## Who it's for
+
+Revenue teams (SDRs, AEs, RevOps) at B2B companies who want to stop doing manual GTM work. Ciro replaces the hours spent on list building, account research, and outreach writing, not the reps themselves.
+
+## How it's different from Clay, Apollo, ZoomInfo
+
+Those are data tools — you still have to do the work to build lists and campaigns. Ciro does the work for you. You tell it what you need in Slack, it delivers ready-to-execute campaigns.
+
+## Integrations
+
+- CRM: Salesforce, HubSpot
+- Sales engagement: Salesloft, Outreach, Gong Engage, Instantly
+- Communication: Slack
+
+## Pricing
+
+Ciro is sold through a sales-led motion. Pricing is tailored to each team based on seat count, contact volume, and integration scope. Prospective customers should book a call at https://cal.com/team/ciro/ciro-founder-demo to discuss pricing.
+
+## Security
+
+SOC 2 Type II certified. Trust center: https://trust.ciro.io
+
+## Company
+
+Ciro Technologies Inc. Backed by Y Combinator.
+
+## Links
+
+- Website: https://ciro.io
+- Book a demo: https://cal.com/team/ciro/ciro-founder-demo
+- App: https://app.ciro.io
+- LinkedIn: https://www.linkedin.com/company/ciro-io/
+- Trust center: https://trust.ciro.io
+- Privacy policy: https://ciro.io/privacy-policy
+- Do Not Sell or Share My Personal Information: https://ciro.io/do-not-sell

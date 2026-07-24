@@ -1,0 +1,23 @@
+generated: '2026-07-18'
+method: searched
+source: https://status.ciro.io
+name: Ciro Lifecycle
+status_page:
+  url: https://status.ciro.io
+  status: 200
+  provider: Better Stack (uptime.betterstack.com)
+  monitored_components:
+  - Natural Language Parser API
+versioning_policy:
+  documented: false
+  notes: No public versioning policy located (no developer docs surface published).
+deprecation_policy:
+  documented: false
+  notes: No published deprecation/sunset policy located.
+sla:
+  documented: false
+notes: >-
+  Ciro is a sales-led AI sales platform with no public developer API or docs
+  surface as of this probe; the only lifecycle signal published is a Better
+  Stack status page at status.ciro.io that monitors an internal
+  "Natural Language Parser API" component.

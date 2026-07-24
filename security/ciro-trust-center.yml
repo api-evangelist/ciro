@@ -1,0 +1,18 @@
+generated: '2026-07-18'
+method: searched
+source: https://www.ciro.io/llms.txt
+name: Ciro Trust Center
+trust_center: https://trust.ciro.io
+legal_entity: Ciro Technologies Inc.
+certifications:
+- name: SOC 2 Type II
+  status: certified
+  evidence: https://www.ciro.io/llms.txt
+  detail: 'Ciro states "SOC 2 Type II certified" and links to its trust center at trust.ciro.io.'
+privacy:
+  privacy_policy: https://ciro.io/privacy-policy
+  do_not_sell: https://ciro.io/do-not-sell
+notes: >-
+  Trust center (trust.ciro.io, HTTP 200) is a hosted JavaScript single-page app
+  whose certification list is not statically scrapable; the SOC 2 Type II claim
+  is taken verbatim from Ciro's own published /llms.txt Security section.
