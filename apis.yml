@@ -9,10 +9,16 @@ description: >-
   contacts, queries the CRM, analyzes CSVs, drafts multi-step personalized email
   sequences, and recommends the highest-ROI campaigns. It integrates with
   Salesforce and HubSpot (CRM); Salesloft, Outreach, Gong Engage, and Instantly
-  (sales engagement); and Slack. Ciro is sold through a sales-led motion, is SOC
-  2 Type II certified, and is backed by Y Combinator. Ciro was surfaced as a
-  portfolio company of CRV and enriched into the API Evangelist network; it does
-  not currently publish a public developer API, OpenAPI, or SDK surface.
+  (sales engagement); Slack; and webhook-based export to Clay and Zapier. Ciro is
+  sold through a sales-led motion with no published pricing, is SOC 2 Type II
+  certified, and was backed by Y Combinator and CRV. On 2026-07-08 Reevo
+  announced it had acquired Ciro and is folding the prospecting agent into its
+  revenue operating system; ciro.io remains live and still sells, and every page
+  now carries an "acquired by Reevo" banner. Ciro was surfaced as a portfolio
+  company of CRV and enriched into the API Evangelist network. It publishes no
+  public developer API, no developer documentation, no OpenAPI, GraphQL, MCP or
+  AsyncAPI contract, no SDK in any package registry, and no /.well-known/
+  document — every one of those was probed on 2026-08-14 and missed.
 url: https://raw.githubusercontent.com/api-evangelist/ciro/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -21,20 +27,27 @@ x-backed-by:
 - y-combinator
 x-tier: stub
 x-tier-reason: portfolio-lead
+x-acquired-by:
+  company: Reevo
+  url: https://reevo.ai/
+  announced: '2026-07-08'
+  source: >-
+    https://www.globenewswire.com/news-release/2026/07/08/3324459/0/en/reevo-strengthens-its-ai-powered-prospecting-and-outreach-with-acquisition-of-ciro.html
+  status: brand still live and selling at ciro.io
 accessModel:
   pricing: unknown
-  onboarding: unknown
+  onboarding: approval
   trial: false
   try_now: false
   public: false
-  label: Unknown
-  confidence: low
+  label: Requires approval
+  confidence: medium
   source: []
-  generated: '2026-07-22'
+  generated: '2026-08-14'
   method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-18'
+modified: '2026-08-14'
 image: https://ciro.io/og-image.png
 tags:
 - Company
@@ -58,12 +71,8 @@ maintainers:
 common:
 - type: Website
   url: https://www.ciro.io/
-- type: Blog
-  url: https://www.ciro.io/blog
-- type: SignUp
-  url: https://app.ciro.io
 - type: Login
-  url: https://app.ciro.io
+  url: https://app.ciro.io/login
 - type: PrivacyPolicy
   url: https://ciro.io/privacy-policy
 - type: TermsOfService
@@ -72,16 +81,82 @@ common:
   url: https://trust.ciro.io
 - type: Compliance
   url: security/ciro-trust-center.yml
-- type: StatusPage
-  url: https://status.ciro.io
 - type: Lifecycle
   url: lifecycle/ciro-lifecycle.yml
 - type: DomainSecurity
   url: security/ciro-domain-security.yml
 - type: LLMsTxt
   url: llms/ciro-llms.txt
+- type: Plans
+  url: plans/ciro-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/ciro-rate-limits.yml
+- type: Packages
+  url: packages/ciro-packages.yml
+x-pointers-deliberately-absent:
+- type: Blog
+  was: https://www.ciro.io/blog
+  reason: >-
+    Removed 2026-08-14. The path now returns HTTP 301 to the homepage; Ciro has
+    no blog. Verified against sitemap.xml, which lists no blog URL.
+- type: SignUp
+  was: https://app.ciro.io
+  reason: >-
+    Removed 2026-08-14. There is no self-serve signup — Ciro is sales-led and
+    app.ciro.io offers only a login. The Login pointer carries the real surface.
+- type: StatusPage
+  was: https://status.ciro.io
+  reason: >-
+    Removed 2026-08-14. The host's TLS handshake fails ("tlsv1 alert internal
+    error") on three consecutive probes, so the Better Stack status page cannot
+    be loaded by any client. It served HTTP 200 on 2026-07-18. See
+    lifecycle/ciro-lifecycle.yml; restore if the certificate is re-issued.
+- type: WellKnown
+  reason: >-
+    Not emitted. Every /.well-known/ path 404s on ciro.io and returns an HTML SPA
+    shell (not a document) on app.ciro.io. See well-known/ciro-well-known.yml.
+- type: SDKs
+  reason: >-
+    Not emitted. Twelve registry lookups found no Ciro client library in any
+    language. See packages/ciro-packages.yml.
+- type: Webhooks
+  reason: >-
+    Not emitted. The integrations page names webhook export to Clay and Zapier in
+    marketing copy, but no webhook catalog, event list, payload or subscription
+    documentation is published anywhere, and zapier.com/apps/ciro returns 404.
+- type: Pricing
+  reason: Not emitted. /pricing returns 404 and no pricing page exists.
+- type: AgentCard
+  reason: >-
+    Not emitted. Both /.well-known/agent-card.json and /.well-known/agent.json
+    were probed on every host; ciro.io 404s and app.ciro.io returns the same HTML
+    SPA shell it returns for every path. No card exists.
 x-enrichment:
-  date: '2026-07-19'
-  status: backfilled
+  date: '2026-08-14'
+  status: minimal
+  artifacts_added: 4
   pass: local-v1
-  note: backfilled from .gitignore signal + verified work evidence
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    Ciro ships its AI prospecting agent only as a Slack app and a hosted web
+    application — api.ciro.io, docs.ciro.io, developer.ciro.io and
+    developers.ciro.io are all NXDOMAIN, and the 15-URL sitemap contains no
+    developer, docs or API page at all.
+  evidence:
+  - url: https://ciro.io/openapi.json
+    status: 404
+  - url: https://www.ciro.io/docs
+    status: 404
+  - url: https://app.ciro.io/mcp
+    status: 404
+  - url: https://app.ciro.io/graphql
+    status: 404
+  - url: https://ciro.io/.well-known/agent-card.json
+    status: 404
+  - url: https://api.github.com/orgs/ciro-io
+    status: 404
+  - url: https://www.ciro.io/sitemap.xml
+    status: 200
+  checked: '2026-08-14'
