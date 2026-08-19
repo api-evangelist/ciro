@@ -1,0 +1,96 @@
+generated: '2026-08-14'
+method: probed
+source: >-
+  Live unauthenticated GETs of the RFC 8615 /.well-known/ discovery surface on
+  every host Ciro controls: the marketing origin (ciro.io / www.ciro.io, behind
+  Cloudflare) and the product application (app.ciro.io, on Heroku). No API host
+  exists to probe — api.ciro.io, docs.ciro.io, developer.ciro.io and
+  developers.ciro.io are all NXDOMAIN.
+description: >-
+  Ciro serves NO /.well-known/ document from any host it controls. This is a
+  recorded absence, not an unchecked one. The marketing origin answers a real
+  HTTP 404 with a Next.js error page for every path. The application origin is
+  the more interesting negative: app.ciro.io answers HTTP 200 with a 1,030-byte
+  single-page-app shell for EVERY path under /.well-known/, including paths that
+  cannot exist. Those 200s are catch-all routing, not documents, and are recorded
+  as misses. No WellKnown or SecurityTxt pointer is emitted from this file — the
+  pointer would assert that Ciro publishes a discovery surface, and Ciro does not.
+hosts:
+- host: https://ciro.io
+  role: marketing origin (Cloudflare)
+  result: real 404s
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/mcp.json
+    status: 404
+- host: https://app.ciro.io
+  role: product application (Heroku)
+  result: SPA catch-all — every path returns the same 1,030-byte HTML shell
+  spa_shell_bytes: 1030
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: null
+    verdict: miss
+    note: HTML SPA shell, not a document.
+  - path: /.well-known/openid-configuration
+    status: 200
+    verdict: miss
+    note: HTML SPA shell, not a document.
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    verdict: miss
+    note: HTML SPA shell, not a document.
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    verdict: miss
+    note: HTML SPA shell, not a document.
+  - path: /.well-known/api-catalog
+    status: 200
+    verdict: miss
+    note: HTML SPA shell, not a document.
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    verdict: miss
+    note: HTML SPA shell, not a document.
+  - path: /.well-known/agent-card.json
+    status: 200
+    verdict: miss
+    note: >-
+      HTML SPA shell. Explicitly REJECTED as an agent card — the body is
+      text/html, not a JSON AgentCard object, and the identical response is
+      returned for /.well-known/agent.json and for paths that do not exist.
+  - path: /.well-known/agent.json
+    status: 200
+    verdict: miss
+    note: HTML SPA shell, not a document.
+  - path: /.well-known/mcp.json
+    status: 200
+    verdict: miss
+    note: HTML SPA shell, not a document.
+documents_found: 0
+security_txt: null
+openid_configuration: null
+oauth_authorization_server: null
+api_catalog: null
+agent_card: null
+pointers_emitted: []
+pointer_note: >-
+  No WellKnown pointer and no SecurityTxt pointer are wired into apis.yml. Zero
+  paths returned a real document, and a pointer here would credit Ciro with a
+  discovery surface it does not serve.

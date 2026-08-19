@@ -1,0 +1,58 @@
+generated: '2026-08-14'
+method: searched
+source: https://www.ciro.io/book-a-demo
+note: >-
+  Ciro publishes NO pricing of any kind. There is no pricing page — /pricing
+  returns HTTP 404 and no pricing URL appears in the site's own sitemap.xml,
+  which lists all 15 public pages. Ciro's own published /llms.txt states the
+  position plainly: "Ciro is sold through a sales-led motion. Pricing is tailored
+  to each team based on seat count, contact volume, and integration scope.
+  Prospective customers should book a call." Every commercial call to action on
+  the site resolves to a demo booking or a login. So there is no tier, no listed
+  price, no included quota and no overage rate to record. This is an honest zero,
+  recorded rather than omitted: the absence of published pricing is the finding.
+  No Pricing link-property pointer is wired into apis.yml, because no pricing
+  page exists to point at.
+description: >-
+  Ciro publishes no plans and no prices. Access is enterprise, sales-led and
+  approval-gated: there is no self-serve signup and no free tier, and the only
+  route in is to request a demo and talk to sales, after which pricing is quoted
+  per team against seat count, contact volume and integration scope.
+plan_count: 0
+plans: []
+model: enterprise-sales-only
+self_serve: false
+free_tier: false
+trial:
+  offered: false
+  note: >-
+    No free trial or free tier is advertised anywhere on the public site. apis.yml
+    accessModel already records trial:false / try_now:false.
+pricing_dimensions_named_but_unpriced:
+- seat count
+- contact volume
+- integration scope
+acquisition:
+  path: Book a Demo
+  url: https://www.ciro.io/book-a-demo
+  scheduler: https://cal.com/team/ciro/ciro-founder-demo
+  login: https://app.ciro.io/login
+x-evidence:
+- url: https://www.ciro.io/pricing
+  status: 404
+  fetched: '2026-08-14'
+- url: https://www.ciro.io/book-a-demo
+  status: 200
+  fetched: '2026-08-14'
+- url: https://ciro.io/llms.txt
+  status: 200
+  fetched: '2026-08-14'
+  note: >-
+    Provider-published. Carries the "sales-led motion / pricing is tailored"
+    statement verbatim under its "## Pricing" heading.
+- url: https://www.ciro.io/sitemap.xml
+  status: 200
+  fetched: '2026-08-14'
+  note: >-
+    15 URLs, last modified 2026-07-09. Product, solutions, integrations, legal.
+    No pricing or plans page in the index.

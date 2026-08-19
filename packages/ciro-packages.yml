@@ -1,0 +1,124 @@
+generated: '2026-08-14'
+method: probed
+source: >-
+  Unauthenticated registry metadata endpoints (registry.npmjs.org, pypi.org,
+  rubygems.org, packagist.org, api.nuget.org, crates.io, proxy.golang.org,
+  repo1.maven.org) plus api.github.com organization and code search, and Ciro's
+  own site at https://ciro.io and https://ciro.io/llms.txt.
+description: >-
+  Ciro publishes no client library in any public package registry, and there is
+  nothing to publish one for: Ciro ships no public API. This is a recorded
+  absence, not an unchecked one — twelve registry lookups, two npm full-text
+  searches and a GitHub organization lookup were run on 2026-08-14 and every one
+  missed. Ciro's distribution model is not an SDK at all: the product is consumed
+  as a Slack app and a web application, with data leaving through vendor
+  connectors (Salesforce, HubSpot, Outreach, Gong Engage, Slack) and through
+  webhook export to Clay and Zapier described only in marketing copy. No SDKs
+  pointer is emitted, so the ergonomics sdk_count checks correctly score zero
+  here rather than being credited from a connector list.
+packages: []
+package_count: 0
+official_sdk_count: 0
+distribution_model: no-sdk-saas-connectors
+registry_probes:
+- registry: npm
+  query: ciro
+  url: https://registry.npmjs.org/ciro
+  status: 200
+  version: null
+  results: 0
+  note: >-
+    NOT Ciro Technologies. The document has no versions, no dist-tags, no
+    maintainers, no description, no homepage and no repository — an unpublished
+    or name-held record created 2025-06-05 and last touched 2025-06-14. Recorded
+    as a miss, not a hit; a 200 here is a registry stub, not a package.
+- registry: npm
+  query: '@ciro/sdk'
+  url: https://registry.npmjs.org/@ciro/sdk
+  status: 404
+  version: null
+- registry: npm
+  query: ciro-sdk
+  url: https://registry.npmjs.org/ciro-sdk
+  status: 404
+  version: null
+- registry: npm
+  query: ciro-mcp
+  url: https://registry.npmjs.org/ciro-mcp
+  status: 404
+  version: null
+- registry: npm
+  query: full-text search "ciro.io"
+  url: https://registry.npmjs.org/-/v1/search?text=ciro.io
+  status: 200
+  results: 0
+  version: null
+- registry: pypi
+  query: ciro
+  url: https://pypi.org/pypi/ciro/json
+  status: 404
+  version: null
+- registry: pypi
+  query: ciro-sdk
+  url: https://pypi.org/pypi/ciro-sdk/json
+  status: 404
+  version: null
+- registry: rubygems
+  query: ciro
+  url: https://rubygems.org/api/v1/gems/ciro.json
+  status: 404
+  version: null
+- registry: nuget
+  query: ciro
+  url: https://api.nuget.org/v3/registration5-semver1/ciro/index.json
+  status: 404
+  version: null
+- registry: crates
+  query: ciro
+  url: https://crates.io/api/v1/crates/ciro
+  status: 403
+  version: null
+  note: crates.io refused the unauthenticated probe; treated as unresolved, not as a hit.
+- registry: go
+  query: github.com/ciro-io/ciro-go
+  url: https://proxy.golang.org/github.com/ciro-io/ciro-go/@v/list
+  status: 404
+  version: null
+- registry: maven
+  query: io.ciro
+  url: https://repo1.maven.org/maven2/io/ciro/
+  status: 404
+  version: null
+- registry: packagist
+  query: ciro
+  url: https://packagist.org/search.json?q=ciro
+  status: 200
+  results: 0
+  version: null
+  note: >-
+    Matches are unrelated third-party packages under the vendor namespace
+    "cirovargas"; none is Ciro Technologies Inc.
+- registry: cdn
+  query: unpkg / jsDelivr loader for a Ciro web component
+  status: null
+  version: null
+  note: >-
+    Not applicable. Ciro ships no embeddable client-side component and no script
+    tag; the product surface is a Slack app and a hosted web application.
+source_code:
+  github_org: null
+  github_org_probe:
+    url: https://api.github.com/orgs/ciro-io
+    status: 404
+  note: >-
+    No Ciro Technologies GitHub organization exists. A GitHub search for
+    repositories with ciro.io in the homepage field returns only unrelated
+    projects belonging to individuals named Ciro. Ciro is a closed-source
+    commercial product.
+gaps:
+- No official SDK in any registry, in any language.
+- >-
+  No dated release signal of any kind exists for this provider. There is no
+  changelog, no published package and (as of 2026-08-14) no reachable status
+  page, so nothing about Ciro's software carries a public version-and-date pair
+  a consumer could use to judge currency.

@@ -1,23 +1,84 @@
-generated: '2026-07-18'
+generated: '2026-08-14'
 method: searched
-source: https://status.ciro.io
+source: >-
+  Live probes of https://status.ciro.io, https://www.ciro.io and
+  https://ciro.io/llms.txt, plus the Reevo acquisition announcement of
+  2026-07-08.
 name: Ciro Lifecycle
 status_page:
   url: https://status.ciro.io
-  status: 200
-  provider: Better Stack (uptime.betterstack.com)
-  monitored_components:
-  - Natural Language Parser API
+  status: unreachable
+  https_status: null
+  https_error: >-
+    TLS handshake fails — the server sends "tlsv1 alert internal error" before a
+    certificate is presented. Plain HTTP answers 308 Permanent Redirect to the
+    https URL that cannot be negotiated, so the page cannot be reached by any
+    client.
+  http_status: 308
+  dns: status.ciro.io CNAME statuspage.betteruptime.com (167.235.220.62)
+  provider: Better Stack (statuspage.betteruptime.com)
+  previously_observed:
+    date: '2026-07-18'
+    status: 200
+    monitored_components:
+    - Natural Language Parser API
+  note: >-
+    REGRESSION. On 2026-07-18 this page served HTTP 200 and monitored a single
+    component, an internal "Natural Language Parser API". On 2026-08-14 the CNAME
+    still points at Better Stack but no certificate is provisioned for the
+    hostname, so the status page is dead to every client. Three consecutive
+    probes failed identically. The StatusPage pointer has been REMOVED from
+    apis.yml as a result — crediting a status page nobody can load would be
+    false. Restore the pointer if Better Stack re-issues the certificate.
 versioning_policy:
   documented: false
-  notes: No public versioning policy located (no developer docs surface published).
+  notes: No public versioning policy located; no developer documentation surface exists.
 deprecation_policy:
   documented: false
-  notes: No published deprecation/sunset policy located.
+  notes: >-
+    No published deprecation or sunset policy, and no Deprecation pointer is
+    emitted.
 sla:
   documented: false
+company_lifecycle:
+  event: acquisition
+  acquirer: Reevo (reevo.ai)
+  announced: '2026-07-08'
+  announcement: >-
+    https://www.globenewswire.com/news-release/2026/07/08/3324459/0/en/reevo-strengthens-its-ai-powered-prospecting-and-outreach-with-acquisition-of-ciro.html
+  site_banner: >-
+    Every page of ciro.io now carries the site-wide banner "Ciro has been
+    acquired by Reevo. Learn more" linking to https://reevo.ai/.
+  brand_status: >-
+    ciro.io is still live and still selling — the product, solutions,
+    integrations and demo-booking pages all serve HTTP 200 and the app at
+    app.ciro.io still accepts logins. Ciro is being folded into Reevo's platform
+    rather than shut down, so this is recorded as an acquisition in progress, not
+    as a defunct company.
+  watch: >-
+    The dead status page and a sitemap last modified 2026-07-09 (the day after
+    the announcement) are the first decay signals. Re-probe next round; if
+    ciro.io begins redirecting to reevo.ai, the coverage state moves from
+    no-developer-program to defunct and any future API surface belongs to the
+    Reevo profile, not this one.
 notes: >-
-  Ciro is a sales-led AI sales platform with no public developer API or docs
-  surface as of this probe; the only lifecycle signal published is a Better
-  Stack status page at status.ciro.io that monitors an internal
-  "Natural Language Parser API" component.
+  Ciro is a sales-led AI sales platform with no public developer API, no
+  developer documentation and no machine-readable contract as of this probe. The
+  only lifecycle signals it publishes are the (now unreachable) Better Stack
+  status page and its own /llms.txt.
+x-evidence:
+- url: https://status.ciro.io/
+  status: 0
+  fetched: '2026-08-14'
+  note: TLS handshake failure, three consecutive attempts.
+- url: http://status.ciro.io/
+  status: 308
+  fetched: '2026-08-14'
+  note: Caddy redirect to the unreachable https origin.
+- url: https://www.ciro.io/integrations
+  status: 200
+  fetched: '2026-08-14'
+  note: Carries the "Ciro has been acquired by Reevo" banner.
+- url: https://www.ciro.io/changelog
+  status: 404
+  fetched: '2026-08-14'
