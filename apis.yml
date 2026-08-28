@@ -34,6 +34,17 @@ x-acquired-by:
   source: >-
     https://www.globenewswire.com/news-release/2026/07/08/3324459/0/en/reevo-strengthens-its-ai-powered-prospecting-and-outreach-with-acquisition-of-ciro.html
   status: brand still live and selling at ciro.io
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: approval
