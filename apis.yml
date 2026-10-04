@@ -73,6 +73,7 @@ tags:
 - CRM
 - Slack
 - B2B
+- Data Enrichment
 tags_raw:
 - Company
 - Sales
@@ -86,6 +87,7 @@ tags_raw:
 - CRM
 - Slack
 - B2B
+- Data Enrichment
 apis: []
 maintainers:
 - FN: Kin Lane
